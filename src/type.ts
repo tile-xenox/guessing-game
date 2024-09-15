@@ -136,7 +136,7 @@ type CL<E extends unknown[], S extends unknown[], N> = [E, S] extends [[unknown,
             ? Lt<N>
             : Gt<N>
 
-type GuessingNumner<E, S> = GenerateExpect<E> extends infer E extends Num
+type GuessingNumber<E, S> = GenerateExpect<E> extends infer E extends Num
     ? GenerateSecret<S> extends infer S extends Num
         ? CN<E, S> extends infer RN
             ? RN extends Eq
@@ -159,6 +159,6 @@ type GuessingNumner<E, S> = GenerateExpect<E> extends infer E extends Num
     : unknown
 
 export type GameStart<S extends string> = {
-    guessingNumber: <E extends number>(expect: E) => GuessingNumner<E, S>,
+    guessingNumber: <E extends number>(expect: E) => GuessingNumber<E, S>,
     check: (v: Eq) => void,
 }
